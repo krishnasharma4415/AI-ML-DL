@@ -1,0 +1,23 @@
+import cv2
+import matplotlib.pyplot as plt
+def Detect(path):
+    img = cv2.imread(path)
+    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    
+    face_cascade = cv2.CascadeClassifier('opencv/haarcascade_frontalface_default.xml')
+    left_eye_cascade = cv2.CascadeClassifier('opencv/haarcascade_lefteye_2splits.xml')
+    right_eye_cascade = cv2.CascadeClassifier('opencv/haarcascade_righteye_2splits.xml')
+
+    faces = face_cascade.detectMultiScale(gray,1.3,5)
+    left_eye = left_eye_cascade.detectMultiScale(gray,1.3,5)
+    right_eye = right_eye_cascade.detectMultiScale(gray,1.3,5)
+    
+    for (x,y,w,h) in faces:
+        face_img = cv2.rectangle(img,(x,y),(x+w,y+h),(200,0,0),2)
+        roi_gray = gray[y:y+h, x:x+w]
+        roi_color = face_img[y:y+h, x:x+w]
+        for (lex,ley,lew,leh) in left_eye:
+            face_img = cv2.rectangle(roi_color,(lex,ley),(lex+lew,ley+leh),(0,200,0),2)
+            for (rex,rey,rew,reh) in right_eye:
+                face_img = cv2.rectangle(roi_color,(rex,rey),(rex+rew,rey+reh),(0,200,0),2)
+    plt.imshow(face_img,cmap='gray')
