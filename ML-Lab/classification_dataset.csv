@@ -1,0 +1,16 @@
+Feature1,Feature2,Feature3,Feature4,Target
+C,Y,Medium,Yes,Class1
+A,X,Low,No,Class1
+A,X,Medium,Yes,Class2
+C,X,High,No,Class1
+B,X,Medium,No,Class1
+A,X,Low,No,Class1
+A,Z,Low,Yes,Class2
+A,Z,High,No,Class2
+C,X,Medium,Yes,Class2
+A,Z,Medium,No,Class2
+C,X,Medium,Yes,Class1
+C,Z,Low,No,Class2
+C,Z,Low,No,Class2
+A,Z,Medium,Yes,Class1
+C,Z,Low,Yes,Class2
